@@ -25,13 +25,16 @@ body::before{
   left:0;
   width:100%;
   height:100%;
-  background:rgba(0, 0, 0, 0.228);
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(1px);
   z-index:-1;
 }
 
 /* RESET */
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"Segoe UI",sans-serif;background:var(--fondo)}
+body {
+  font-family: "Segoe UI", sans-serif;
+}
 
 /* CABECERA */
 .cabecera{text-align:center;padding:30px;background:var(--primario);color:white}
@@ -205,16 +208,20 @@ body{font-family:"Segoe UI",sans-serif;background:var(--fondo)}
 }
 
 .cabecera h1{
-  font-size:38px;
-  font-weight:800;
-  letter-spacing:1px;
-  margin-bottom:10px;
-  text-shadow:0 3px 6px rgba(0,0,0,0.25);
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  letter-spacing: 2px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  text-shadow: 0 3px 6px rgba(0,0,0,0.25);
 }
 
-.cabecera p{
-  font-size:18px;
-  opacity:0.95;
+.cabecera p {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  opacity: 1;
+  font-weight: 300;
+  letter-spacing: 0.5px;
 }
 
 /* Línea decorativa */
@@ -271,6 +278,7 @@ body{font-family:"Segoe UI",sans-serif;background:var(--fondo)}
 }
 
 /* Brillo animado estilo premium */
+/* POR DEFECTO: sin animación */
 .tarjeta::before {
   content:"";
   position:absolute;
@@ -280,7 +288,14 @@ body{font-family:"Segoe UI",sans-serif;background:var(--fondo)}
   height:100%;
   background:linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
   transform:skewX(-20deg);
-  animation:shine 2s ease infinite;
+  opacity:0;
+  pointer-events:none;
+}
+
+/* Cuando activamos la animación con JS */
+.tarjeta.brillo-activo::before {
+  animation: shine 2s ease infinite;
+  opacity:1;
 }
 
 @keyframes shine {
@@ -501,4 +516,406 @@ body{font-family:"Segoe UI",sans-serif;background:var(--fondo)}
   background: rgba(255,255,255,0.8);
   backdrop-filter: blur(6px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.mensaje-campo {
+    margin-top: -8px;
+    margin-bottom: 12px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.msg-verde { color: #1abc9c; }
+.msg-amarillo { color: #e1a000; }
+.msg-rojo { color: #e74c3c; }
+
+/* Ocultar la columna "Respuesta" (2da columna) */
+.tabla-registro td:nth-child(2),
+.tabla-registro th:nth-child(2) {
+    display: none;
+}
+
+.menu-categorias{
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 30px 20px;
+  flex-wrap: wrap;
+}
+
+.tarjeta-categoria{
+  width: 320px;
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,.15);
+  text-align: center;
+  transition: .3s ease;
+  cursor: default;
+  position: relative;
+}
+
+.tarjeta-categoria:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,.20);
+}
+
+.cat-img{
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 15px;
+}
+
+.tarjeta-categoria h2{
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 32px;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.tarjeta-categoria p{
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  opacity: .85;
+  margin-bottom: 15px;
+}
+
+.btn-cat{
+  background: var(--color-principal);
+  padding: 10px 16px;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  transition: .2s;
+  margin-bottom: 10px;
+}
+
+.btn-cat:hover{
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+}
+
+.ejercicios-cat{
+  margin-top: 15px;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ejercicios-cat button{
+  width: 100%;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 12px;
+}
+
+@media (max-width: 900px){
+  .tarjeta-categoria{
+    width: 90%;
+  }
+}
+
+/* ==============================
+   ANIMACIÓN DE TARJETA ACTIVA
+   ============================== */
+
+.tarjeta-categoria {
+  transition: 
+    transform 0.6s ease,
+    opacity 0.5s ease,
+    box-shadow 0.5s ease;
+}
+
+/* Tarjeta seleccionada */
+.tarjeta-activa {
+  transform: scale(1.12);
+  z-index: 20;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+}
+
+/* Tarjetas que desaparecen */
+.tarjeta-oculta {
+  opacity: 0;
+  transform: scale(0.85);
+  pointer-events: none;
+}
+
+/* Menú expandido */
+.menu-expandido {
+  width: 100%;
+}
+
+/* Zona donde se muestran ejercicios separados */
+.zona-ejercicios {
+  margin-top: 50px;
+}
+
+/* ==============================
+   CENTRADO REAL DE TARJETA ACTIVA
+   ============================== */
+
+.tarjeta-activa {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1.1);
+  z-index: 1000;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  transition: all 0.6s ease;
+}
+
+.tarjeta-oculta {
+  opacity: 0;
+  transform: scale(0.7);
+  pointer-events: none;
+}
+
+.menu-categorias.oculta {
+  display: none;
+}
+
+/* --- evitar que el hover mueva la tarjeta activa --- */
+.tarjeta-categoria:hover {
+  transform: translateY(-3px);
+  /* dejar la regla ligera para tarjetas no activas */
+}
+
+/* Cuando la tarjeta está activa, evitar que el :hover la afecte */
+.tarjeta-activa {
+  position: fixed;
+  left: 50%;
+  /* top se asignará desde JS para evitar superposición con el header */
+  transform: translate(-50%, -50%) scale(1.1);
+  z-index: 1000;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  transition: all 0.6s ease;
+  pointer-events: auto;
+}
+
+/* Evitamos que el hover agregue más transform a la activa */
+.tarjeta-activa:hover {
+  transform: translate(-50%, -50%) scale(1.1) !important;
+}
+
+/* tarjetas que desaparecen */
+.tarjeta-oculta {
+  opacity: 0;
+  transform: scale(0.7);
+  pointer-events: none;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+/* ocultar menú completo */
+.menu-categorias.oculta {
+  display: none;
+}
+
+/* Oculta la tarjeta cuando un ejercicio está abierto */
+.tarjeta-activa.ocultar-por-ejercicio {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0.85);
+  transition: all 0.4s ease;
+}
+
+/* CUANDO UN EJERCICIO ESTÁ ACTIVO, SE PEGA AL HEADER */
+.seccion-ejercicio.activo {
+  padding-top: 10px !important;
+  margin-top: 0 !important;
+}
+
+.seccion-ejercicio.activo::before {
+  display: none;   /* quita el halo decorativo arriba */
+}
+
+.seccion-ejercicio{
+  position:relative;
+  padding:0 !important;
+  margin-top:0 !important;
+}
+
+.seccion-ejercicio.activo {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+.seccion-ejercicio.activo::before {
+  display: none !important;
+}
+
+.seccion-ejercicio.activo {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* ==============================
+   SECCIÓN DE EJERCICIOS ACTIVA
+   ============================== */
+.seccion-ejercicio {
+  position: relative;
+  padding: 0 !important;
+  margin-top: 0 !important;
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.seccion-ejercicio.activo {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+
+.seccion-ejercicio.activo::before {
+  display: none !important; /* quita el halo decorativo */
+}
+
+/* Para forzar que no quede espacio extra */
+.seccion-ejercicio:not(.activo) {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+/* Mantener animaciones de aparición */
+.seccion-ejercicio {
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+}
+
+.seccion-ejercicio:not(.oculto){
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Recuadro de información superpuesto */
+.info-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6); /* fondo semi-transparente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  font-family: 'Comic Sans MS', cursive, sans-serif; /* fuente creativa */
+  transition: opacity 0.3s ease;
+}
+
+.info-overlay.oculto {
+  display: none;
+}
+
+.info-contenido {
+  background: linear-gradient(135deg, #00b4d8, #0077b6);
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 500px;
+  color: #fff;
+  text-align: left;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  animation: aparecer 0.5s ease;
+}
+
+.info-contenido h2 {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 24px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.info-contenido p,
+.info-contenido ul,
+.info-contenido ol {
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.info-contenido ul li,
+.info-contenido ol li {
+  margin-bottom: 6px;
+}
+
+.verde { color: #00ff00; font-weight: bold; }
+.amarillo { color: #ffff00; font-weight: bold; }
+.rojo { color: #ff3b3b; font-weight: bold; }
+
+#cerrar-info {
+  display: block;
+  margin: 15px auto 0;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 12px;
+  background: #fff;
+  color: #0077b6;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#cerrar-info:hover {
+  background: #f0f0f0;
+  transform: scale(1.05);
+}
+
+@keyframes aparecer {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Tarjeta de información entre header y tarjeta de ejercicio */
+.tarjeta-info {
+  position: relative; /* se sitúa en el flujo normal, entre header y ejercicio */
+  margin: 10px auto;
+  max-width: 650px;
+  padding: 18px 24px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #00b4d8, #0077b6);
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  font-size: 15px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  animation: aparecer-tarjeta 0.4s ease;
+  text-align: left;
+}
+
+.tarjeta-info h3 {
+  font-family: 'Brush Script MT', cursive;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.tarjeta-info p {
+  line-height: 1.5;
+}
+
+@keyframes aparecer-tarjeta {
+  0% { transform: translateY(-10px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.oculto {
+  display: none !important;
+}
+
+
+
+
+
+
+/* Tarjeta de ejercicio superpuesta */
+.seccion-ejercicio.activo {
+  position: absolute;              /* Se posiciona sobre otros elementos */
+  z-index: 1500;                   /* Por encima de todo menos header y aviso */
+  top: 100px;                       /* Ajusta según altura de header + aviso */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 800px;
+  border-radius: 16px;
+  padding: 20px;
+  transition: all 0.3s ease;
 }

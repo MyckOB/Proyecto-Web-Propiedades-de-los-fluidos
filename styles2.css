@@ -7,10 +7,6 @@
   --sombra: 0 4px 10px rgba(0,0,0,.1);
 }
 
-body{
-  background:var(--color-fondo);
-}
-
 /* ENCABEZADOS DE EJERCICIOS */
 .enunciado h2{
   color:var(--color-principal);

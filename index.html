@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Propiedades de los Fluidos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="styles2.css">
 </head>
@@ -14,31 +15,85 @@
   <p>Ejercicios interactivos</p>
 </header>
 
+<div class="tarjeta-info oculto" id="tarjeta-info">
+  <h3>💡 Cómo funciona el semáforo y la validación</h3>
+  <p>
+    - Cada respuesta que ingreses se compara con la correcta.<br>
+    - Verde ✅ = Correcto.<br>
+    - Amarillo ⚠ = Cerca, revisa decimales.<br>
+    - Rojo ❌ = Incorrecto.<br>
+    - Ingresa tus valores y presiona "Validar".<br>
+    - Aprende de tus errores usando los registros y estadísticas.
+  </p>
+</div>
+
+
 <main class="contenedor">
 
-<nav class="menu-inicial">
+<div id="info-semaforo" class="info-overlay oculto">
+  <div class="info-contenido">
+    <h2>📝 Cómo funciona el semáforo de respuestas</h2>
+    <p>
+      Cada respuesta que ingreses será evaluada automáticamente según su exactitud:
+    </p>
+    <ul>
+      <li><span class="verde">✔ Verde:</span> Tu respuesta es correcta.</li>
+      <li><span class="amarillo">⚠ Amarillo:</span> Tu respuesta está cerca. Revisa decimales o unidades.</li>
+      <li><span class="rojo">❌ Rojo:</span> Tu respuesta es incorrecta. Intenta de nuevo.</li>
+    </ul>
+    <p>
+      <strong>Pasos para responder correctamente:</strong>
+    </p>
+    <ol>
+      <li>Lee cuidadosamente el enunciado del ejercicio.</li>
+      <li>Ingresa tu valor en los campos correspondientes.</li>
+      <li>Haz clic en "Validar" para comprobar tu respuesta.</li>
+      <li>Observa el semáforo y los mensajes debajo de cada campo.</li>
+      <li>Aprende de los errores y mejora tus resultados.</li>
+    </ol>
+    <button id="cerrar-info">Cerrar</button>
+  </div>
+</div>
 
-  <div class="categoria">
-    <h3 class="titulo-categoria">Viscosidad</h3>
-    <div class="grupo-botones">
+
+<div class="menu-categorias">
+  
+  <!-- TARJETA 1 -->
+  <div class="tarjeta-categoria" data-cat="viscosidad">
+    <img src="vmfimg3.jpg" class="cat-img">
+    <h2>Viscosidad</h2>
+    <p>La viscosidad de un fluido es una medida de su resistencia a la deformación. Es debida a la fuerza de fricción interna que aparece cuando capas adyacentes del fluido se mueven con velocidades diferentes.</p>
+    <button class="btn-cat">Ver ejercicios</button>
+
+    <div class="ejercicios-cat" id="cat-viscosidad">
       <button class="btn-menu" data-ejercicio="ej1">Ejercicio 1</button>
       <button class="btn-menu" data-ejercicio="viscosidad">Ejercicio 2</button>
       <button class="btn-menu" data-ejercicio="ej3">Ejercicio 3</button>
     </div>
   </div>
 
-  <div class="categoria">
-    <h3 class="titulo-categoria">Tensión Superficial</h3>
-    <div class="grupo-botones">
+  <!-- TARJETA 2 -->
+  <div class="tarjeta-categoria" data-cat="tension">
+    <img src="tsmfimg1.jpg" class="cat-img">
+    <h2>Tensión superficial</h2>
+    <p>La tensión superficial es la fuerza por unidad de longitud que actúa a lo largo de la superficie de un líquido y que tiende a minimizar el área superficial del líquido.</p>
+    <button class="btn-cat">Ver ejercicios</button>
+
+    <div class="ejercicios-cat" id="cat-tension">
       <button class="btn-menu" data-ejercicio="tension">Ejercicio 4</button>
       <button class="btn-menu" data-ejercicio="ej5">Ejercicio 5</button>
       <button class="btn-menu" data-ejercicio="ej6">Ejercicio 6</button>
     </div>
   </div>
 
-  <div class="categoria">
-    <h3 class="titulo-categoria">Presión</h3>
-    <div class="grupo-botones">
+  <!-- TARJETA 3 -->
+  <div class="tarjeta-categoria" data-cat="presion">
+    <img src="pmfimg2.jpg" class="cat-img">
+    <h2>Presión</h2>
+    <p>La presión es la fuerza ejercida perpendicularmente por unidad de área sobre una superficie.</p>
+    <button class="btn-cat">Ver ejercicios</button>
+
+    <div class="ejercicios-cat" id="cat-presion">
       <button class="btn-menu" data-ejercicio="presion">Ejercicio 7</button>
       <button class="btn-menu" data-ejercicio="ej8">Ejercicio 8</button>
       <button class="btn-menu" data-ejercicio="ej9">Ejercicio 9</button>
@@ -46,8 +101,7 @@
     </div>
   </div>
 
-</nav>
-
+</div>
 
 <!-- ================= EJERCICIO 1 ================= -->
 <section id="ej1" class="seccion-ejercicio oculto">

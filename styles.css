@@ -1,0 +1,504 @@
+/* VARIABLES */
+:root{
+  --fondo: #f4f7fb;
+  --primario: #0b84ff;
+  --texto: #112;
+  --blanco: #ffffff;
+  --sombra: 0 8px 20px rgba(17,17,17,0.08);
+  --verde: #1abc9c;
+  --amarillo: #f1c40f;
+  --rojo: #e74c3c;
+  --card-radio: 14px;
+}
+
+/* FONDO GLOBAL PARA TODA LA PÁGINA */
+body {
+  background: url("mlpgu.jpg") no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0, 0, 0, 0.228);
+  z-index:-1;
+}
+
+/* RESET */
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Segoe UI",sans-serif;background:var(--fondo)}
+
+/* CABECERA */
+.cabecera{text-align:center;padding:30px;background:var(--primario);color:white}
+
+/* CONTENEDOR */
+.contenedor{max-width:980px;margin:auto;padding:20px}
+
+/* MENÚ POR CATEGORÍAS */
+.menu-inicial{
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  align-items:center;
+}
+
+.categoria{
+  width:100%;
+  max-width:420px;
+  background:white;
+  border-radius:12px;
+  box-shadow:var(--sombra);
+  padding:12px;
+}
+
+.titulo-categoria{
+  text-align:center;
+  padding:10px;
+  background:var(--primario);
+  color:white;
+  border-radius:8px;
+  cursor:pointer;
+  user-select:none;
+}
+
+.grupo-botones{
+  display:none;
+  flex-direction:column;
+  gap:10px;
+  margin-top:12px;
+}
+
+.categoria.activa .grupo-botones{
+  display:flex;
+}
+
+.btn-menu{
+  padding:10px;
+  border:none;
+  background:#eef3ff;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.2s;
+}
+
+.btn-menu:hover{
+  background:var(--primario);
+  color:white;
+}
+
+/* TARJETAS */
+.tarjeta{
+  background:white;
+  padding:22px;
+  border-radius:14px;
+  box-shadow:var(--sombra);
+  width:100%;
+  max-width:520px;
+}
+
+.seccion-ejercicio{
+  display:flex;
+  justify-content:center;
+  margin-top:20px;
+}
+
+.oculto{display:none}
+
+/* RESULTADOS */
+.estado-verde{border:2px solid var(--verde)}
+.estado-amarillo{border:2px solid var(--amarillo)}
+.estado-rojo{border:2px solid var(--rojo)}
+
+/* =========================
+   MEJORAS VISUALES DEL MENÚ
+   ========================= */
+
+.categoria{
+  width:100%;
+  max-width:420px;
+  background:white;
+  border-radius:14px;
+  box-shadow:0 6px 14px rgba(0,0,0,0.08);
+  padding:12px;
+  transition:0.3s ease;
+  border:1px solid #e7e7e7;
+}
+
+.categoria:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 22px rgba(0,0,0,0.12);
+}
+
+.titulo-categoria{
+  text-align:center;
+  padding:12px;
+  background:linear-gradient(135deg, var(--primario), #006fe6);
+  color:white;
+  border-radius:10px;
+  cursor:pointer;
+  user-select:none;
+  font-weight:700;
+  letter-spacing:0.5px;
+  transition:0.25s;
+}
+
+.titulo-categoria:hover{
+  filter:brightness(1.12);
+}
+
+/* Animación al abrir submenús */
+.categoria.activa .grupo-botones{
+  display:flex;
+  animation:fadeSlide 0.35s ease;
+}
+
+@keyframes fadeSlide {
+  from { opacity:0; transform:translateY(-6px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+.btn-menu{
+  padding:12px;
+  border:none;
+  background:#f2f6ff;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  transition:0.3s;
+  border:1px solid #dce6ff;
+}
+
+.btn-menu:hover{
+  background:var(--primario);
+  color:white;
+  transform:scale(1.03);
+}
+
+/* ============================================
+   HEADER MEJORADO — ESTILO PROFESIONAL MODERNO
+   ============================================ */
+
+.cabecera{
+  text-align:center;
+  padding:50px 20px;
+  color:white;
+  background:linear-gradient(135deg, #0b84ff, #0067d5, #0098ff);
+  background-size:200% 200%;
+  animation:headerGradient 6s ease infinite;
+  border-bottom-left-radius:20px;
+  border-bottom-right-radius:20px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.22);
+  position:relative;
+}
+
+/* Animación suave del fondo */
+@keyframes headerGradient {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
+
+.cabecera h1{
+  font-size:38px;
+  font-weight:800;
+  letter-spacing:1px;
+  margin-bottom:10px;
+  text-shadow:0 3px 6px rgba(0,0,0,0.25);
+}
+
+.cabecera p{
+  font-size:18px;
+  opacity:0.95;
+}
+
+/* Línea decorativa */
+.cabecera::after{
+  content:"";
+  display:block;
+  width:120px;
+  height:4px;
+  background:white;
+  margin:16px auto 0;
+  border-radius:4px;
+  opacity:0.9;
+  box-shadow:0 0 8px rgba(255,255,255,0.6);
+}
+
+/* ===================================================
+   ANIMACIONES LLAMATIVAS AL CAMBIAR ENTRE EJERCICIOS
+   =================================================== */
+
+.seccion-ejercicio {
+  opacity:0;
+  transform:translateY(20px) scale(0.98);
+  transition:opacity 0.45s ease, transform 0.45s ease;
+}
+
+/* Cuando la sección se hace visible */
+.seccion-ejercicio:not(.oculto){
+  opacity:1;
+  transform:translateY(0px) scale(1);
+}
+
+/* Animación del contenido interno */
+.tarjeta {
+  animation:cardPop 0.55s ease forwards;
+}
+
+@keyframes cardPop {
+  0% {
+    opacity:0;
+    transform:scale(0.9) translateY(20px);
+  }
+  60% {
+    opacity:1;
+    transform:scale(1.03) translateY(0);
+  }
+  100% {
+    transform:scale(1);
+  }
+}
+
+.tarjeta {
+  position:relative;
+  overflow:hidden;
+}
+
+/* Brillo animado estilo premium */
+.tarjeta::before {
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:60%;
+  height:100%;
+  background:linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  transform:skewX(-20deg);
+  animation:shine 2s ease infinite;
+}
+
+@keyframes shine {
+  0% { left:-100%; }
+  100% { left:160%; }
+}
+
+.seccion-ejercicio.oculto {
+  opacity:0;
+  transform:translateY(30px) scale(0.95);
+  transition:opacity 0.35s ease, transform 0.35s ease;
+}
+
+/* ======================================================
+   NUEVO DISEÑO PARA LAS TARJETAS DE LOS EJERCICIOS
+   ====================================================== */
+
+.tarjeta{
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  border-radius:18px;
+  padding:28px;
+  width:100%;
+  max-width:520px;
+
+  /* Sombra multicapa premium */
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.08),
+    0 8px 24px rgba(0,0,0,0.12);
+
+  border:1px solid rgba(255,255,255,0.6);
+  animation:cardEnter 0.65s ease forwards;
+}
+
+/* Animación suave al aparecer */
+@keyframes cardEnter {
+  0%   { opacity:0; transform:translateY(40px) scale(0.96); }
+  40%  { opacity:1; transform:translateY(0px) scale(1.02); }
+  100% { transform:scale(1); }
+}
+
+/* ======================================================
+   FONDO ESTILIZADO PARA CADA EJERCICIO (VISUAL PREMIUM)
+   ====================================================== */
+
+.seccion-ejercicio{
+  position:relative;
+  padding:40px 0;
+}
+
+/* Círculo difuminado decorativo */
+.seccion-ejercicio::before{
+  content:"";
+  position:absolute;
+  top:-80px;
+  left:50%;
+  transform:translateX(-50%);
+  width:380px;
+  height:380px;
+  background:radial-gradient(circle at center,
+    rgba(0, 137, 255, 0.25),
+    rgba(0, 137, 255, 0) 70%
+  );
+  filter:blur(40px);
+  z-index:-1;
+  opacity:0.8;
+}
+
+.tarjeta{
+  background:rgba(255,255,255,0.80);
+  backdrop-filter:blur(12px) saturate(150%);
+}
+
+.menu-inicial {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(6px);
+  padding: 20px;
+  border-radius: 18px;
+}
+
+/* ======================================
+   TABLA MODERNA PARA REGISTROS
+   ====================================== */
+
+.registro-wrapper {
+  margin-top: 20px;
+  overflow-x: auto;
+  padding: 10px;
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+}
+
+.tabla-registro {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow:
+    0 2px 6px rgba(0,0,0,0.06),
+    0 6px 18px rgba(0,0,0,0.10);
+}
+
+.tabla-registro th {
+  background: #0b84ff;
+  color: white;
+  padding: 12px;
+  font-weight: 700;
+  text-align: left;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+}
+
+.tabla-registro td {
+  padding: 10px 12px;
+  font-size: 14px;
+  color: #222;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+
+.tabla-registro tr:nth-child(even) td {
+  background: rgba(0,0,0,0.03);
+}
+
+.tabla-registro tr:hover td {
+  background: rgba(0,120,255,0.10);
+  transition: 0.25s;
+}
+
+/* BADGES DE SEMÁFORO */
+.badge-verde,
+.badge-amarillo,
+.badge-rojo {
+  padding: 6px 10px;
+  font-size: 13px;
+  border-radius: 10px;
+  text-transform: capitalize;
+  color: white;
+  font-weight: 600;
+}
+
+.badge-verde { background: #1abc9c; }
+.badge-amarillo { background: #f1c40f; color:#222; }
+.badge-rojo { background: #e74c3c; }
+
+.btn-borrar {
+    padding: 10px 16px;
+    border: none;
+    background: #e74c3c;
+    color: white;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.25s;
+    margin-left: 8px;
+    box-shadow: 0 4px 10px rgba(231, 76, 60, 0.25);
+}
+
+.btn-borrar:hover {
+    background: #c0392b;
+    transform: scale(1.04);
+}
+
+/* ===================================================
+   SEMÁFORO DISEÑO PREMIUM CIRCULAR
+   =================================================== */
+
+.semaforo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.75);
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  animation: semaforoFade 0.4s ease;
+  backdrop-filter: blur(6px);
+}
+
+@keyframes semaforoFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.semaforo-circulo {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: currentColor; /* Aquí sí toma el color real */
+  border: 2px solid rgba(0,0,0,0.15);
+  box-shadow: 0 0 6px rgba(0,0,0,0.25); /* sombra suave para no hacer “luz blanca” */
+}
+
+
+.semaforo-texto {
+  font-weight: 700;
+  color: #222;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+/* COLORES */
+.semaforo-verde   { color: #1abc9c; }
+.semaforo-amarillo { color: #f1c40f; }
+.semaforo-rojo     { color: #e74c3c; }
+
+/* ======== CONTENEDOR RESULTADO (NECESARIO PARA SEMÁFORO) ======== */
+
+.resultado-panel {
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}

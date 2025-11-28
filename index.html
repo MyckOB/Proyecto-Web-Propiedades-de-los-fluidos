@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <title>Propiedades de los Fluidos</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles2.css">
+</head>
+
+<body>
+
+<header class="cabecera">
+  <h1>Propiedades de los Fluidos</h1>
+  <p>Ejercicios interactivos</p>
+</header>
+
+<main class="contenedor">
+
+<nav class="menu-inicial">
+
+  <div class="categoria">
+    <h3 class="titulo-categoria">Viscosidad</h3>
+    <div class="grupo-botones">
+      <button class="btn-menu" data-ejercicio="ej1">Ejercicio 1</button>
+      <button class="btn-menu" data-ejercicio="viscosidad">Ejercicio 2</button>
+      <button class="btn-menu" data-ejercicio="ej3">Ejercicio 3</button>
+    </div>
+  </div>
+
+  <div class="categoria">
+    <h3 class="titulo-categoria">Tensión Superficial</h3>
+    <div class="grupo-botones">
+      <button class="btn-menu" data-ejercicio="tension">Ejercicio 4</button>
+      <button class="btn-menu" data-ejercicio="ej5">Ejercicio 5</button>
+      <button class="btn-menu" data-ejercicio="ej6">Ejercicio 6</button>
+    </div>
+  </div>
+
+  <div class="categoria">
+    <h3 class="titulo-categoria">Presión</h3>
+    <div class="grupo-botones">
+      <button class="btn-menu" data-ejercicio="presion">Ejercicio 7</button>
+      <button class="btn-menu" data-ejercicio="ej8">Ejercicio 8</button>
+      <button class="btn-menu" data-ejercicio="ej9">Ejercicio 9</button>
+      <button class="btn-menu" data-ejercicio="ej10">Ejercicio 10</button>
+    </div>
+  </div>
+
+</nav>
+
+
+<!-- ================= EJERCICIO 1 ================= -->
+<section id="ej1" class="seccion-ejercicio oculto">
+  <div class="tarjeta">
+
+    <div class="enunciado creative">
+      <h2>Ejercicio 1 – Flujo laminar entre placas paralelas.</h2>
+      <p>Dos placas planas horizontales están separadas por una distancia de 2 
+mm. Entre ellas hay un fluido newtoniano cuya viscosidad dinámica es 
+µ =0.005 Pa⋅s. La placa superior se mueve a 0.2 m/s respecto a la 
+placa inferior que se encuentra fija.</p>
+    </div>
+
+    <form class="formulario">
+      <label>a) Gradiente de velocidad (s⁻¹)</label>
+      <input id="entrada-ej1-0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+      <label>b) Tasa de deformación (s⁻¹)</label>
+      <input id="entrada-ej1-1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+      <label>c) Tensión cortante (Pa)</label>
+      <input id="entrada-ej1-2" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+      <div class="botones">
+        <button type="button" class="btn-primario" id="validar-ej1">Validar</button>
+        <button type="button" class="btn-secundario btn-volver">Volver</button>
+        <button type="button" class="btn-borrar" onclick="borrarRegistro('ej1')">Borrar Registros
+        </button>
+
+      </div>
+    </form>
+
+    <div id="resultado-ej1"></div>
+    <div id="estadisticas-ej1"></div>
+    <div class="registro-wrapper">
+      <table class="tabla-registro" id="registro-ej1"></table>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= EJERCICIO 2 ================= -->
+<section id="viscosidad" class="seccion-ejercicio oculto">
+  <div class="tarjeta">
+
+    <div class="enunciado creative">
+      <h2>Ejercicio 2 – Caída de esfera en fluido viscoso. (Uso de ley de Stokes)</h2>
+      <p>Una esfera de radio 𝑅 = 1 𝑚𝑚 y densidad 𝜌s = 2500 𝑘𝑔/m3 cae en 
+agua (𝜌𝑓 = 1000 kg/m3), con viscosidad dinámica µ = 0.001  𝑃𝑎 ⋅ 𝑠. Suponiendo que la caída es lo suficientemente lenta para que el fluido sea laminar, calcular la velocidad de la esfera.</p>
+    </div>
+
+    <form class="formulario">
+      <label>Velocidad terminal (m/s)</label>
+      <input id="entrada-viscosidad-0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+      <div class="botones">
+        <button type="button" class="btn-primario" id="validar-viscosidad">Validar</button>
+        <button type="button" class="btn-secundario btn-volver">Volver</button>
+        <button type="button" class="btn-borrar" onclick="borrarRegistro('viscosidad')">Borrar Registros
+        </button>
+
+      </div>
+    </form>
+
+    <div id="resultado-viscosidad"></div>
+    <div id="estadisticas-viscosidad"></div>
+    <div class="registro-wrapper">
+      <table class="tabla-registro" id="registro-viscosidad"></table>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= EJERCICIO 3 ================= -->
+<section id="ej3" class="seccion-ejercicio oculto">
+  <div class="tarjeta">
+
+    <div class="enunciado creative">
+      <h2>Ejercicio 3 – Flujo en tubo circular en régimen laminar.</h2>
+      <p>Un líquido con viscosidad dinámica µ = 0.02  𝑃𝑎 ⋅ 𝑠 y densidad ρ =
+ 1200kg/m3 fluye por un tubo de radio interior R = 5 mm y longitud 
+L =1 m. Si la diferencia de presión entre los extremos del tubo es 
+ΔP =500 Pa, se pide calcular el caudal volumétrico del fluido.</p>
+    </div>
+
+    <form class="formulario">
+      <label>Caudal (m³/s)</label>
+      <input id="entrada-ej3-0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+      <div class="botones">
+        <button type="button" class="btn-primario" id="validar-ej3">Validar</button>
+        <button type="button" class="btn-secundario btn-volver">Volver</button>
+        <button type="button" class="btn-borrar" onclick="borrarRegistro('ej3')">Borrar Registros
+        </button>
+
+      </div>
+    </form>
+
+    <div id="resultado-ej3"></div>
+    <div id="estadisticas-ej3"></div>
+    <div class="registro-wrapper">
+      <table class="tabla-registro" id="registro-ej3"></table>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= EJERCICIO 4 ================= -->
+<section id="tension" class="seccion-ejercicio oculto">
+  <div class="tarjeta">
+
+    <div class="enunciado creative">
+      <h2>Ejercicio 4 – Ascenso capilar en tubo fino.</h2>
+      <p>Un tubo capilar de radio r = 0.5 mm está parcialmente sumergido en 
+agua a 20°C, cuya tensión superficial es σ = 0.072 N/m. Si el ángulo 
+de contacto del líquido con el vidrio es aproximadamente cero, es 
+decir, es completamente mojante. Calcular la altura a la que asciende el agua en el tubo.</p>
+    </div>
+
+    <form class="formulario">
+      <label>Altura (cm)</label>
+      <input id="entrada-tension-0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+      <div class="botones">
+        <button type="button" class="btn-primario" id="validar-tension">Validar</button>
+        <button type="button" class="btn-secundario btn-volver">Volver</button>
+        <button type="button" class="btn-borrar" onclick="borrarRegistro('tension')">Borrar Registros
+        </button>
+
+      </div>
+    </form>
+
+    <div id="resultado-tension"></div>
+    <div id="estadisticas-tension"></div>
+    <div class="registro-wrapper">
+      <table class="tabla-registro" id="registro-tension"></table>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= EJERCICIO 5 ================= -->
+<section id="ej5" class="seccion-ejercicio oculto">
+  <div class="tarjeta">
+
+    <div class="enunciado creative">
+      <h2>Ejercicio 5 – Movimiento de líquido en un tubo capilar inclinado.</h2>
+      <p>Un tubo capilar de radio 𝑟 = 0.4 𝑚𝑚 y longitud L = 20 cm está 
+colocado formando un ángulo θ = 45° con la vertical. El tubo se 
+introduce parcialmente en agua a 20°C, con tensión superficial σ =
+ 0.072 N/m, densidad ρ = 1000 kg/m3 y ángulo de contacto cero. Se 
+pide calcular la altura h medida a lo largo del tubo inclinado, y la altura 
+vertical efectiva alcanzada por el menisco.</p>
+    </div>
+
+    <form class="formulario">
+      <label>a) Altura h (m)</label>
+      <input id="entrada-ej5-0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+      <label>b) Altura vertical efectiva (m)</label>
+      <input id="entrada-ej5-1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+      <div class="botones">
+        <button type="button" class="btn-primario" id="validar-ej5">Validar</button>
+        <button type="button" class="btn-secundario btn-volver">Volver</button>
+        <button type="button" class="btn-borrar" onclick="borrarRegistro('ej5')">Borrar Registros
+        </button>
+
+
+      </div>
+    </form>
+
+    <div id="resultado-ej5"></div>
+    <div id="estadisticas-ej5"></div>
+    <div class="registro-wrapper">
+      <table class="tabla-registro" id="registro-ej5"></table>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= EJERCICIO 6 ================= -->
+<section id="ej6" class="seccion-ejercicio oculto">
+  <div class="tarjeta">
+
+    <div class="enunciado creative">
+      <h2>Ejercicio 6 – Soporte de pequeño objeto por tensión superficial.</h2>
+      <p>Una placa rectangular muy delgada de longitud total 𝐿 = 5  𝑐𝑚 y 
+ancho muy despreciable se coloca sobre la superficie del agua, de tal 
+forma que la fuerza de tensión superficial mantiene el alambre sin 
+hundirse. La tensión superficial del agua es σ = 0.072 N/m. Si los 
+bordes mojados están en contacto con el agua con un ángulo de 
+contacto de 0°, es decir, es completamente mojante Calcular la masa máxima que puede soportar el alambre antes de hundirse.</p>
+    </div>
+
+    <form class="formulario">
+      <label>Masa máxima (g)</label>
+      <input id="entrada-ej6-0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+      <div class="botones">
+        <button type="button" class="btn-primario" id="validar-ej6">Validar</button>
+        <button type="button" class="btn-secundario btn-volver">Volver</button>
+        <button type="button" class="btn-borrar" onclick="borrarRegistro('ej6')">Borrar Registros
+        </button>
+
+      </div>
+    </form>
+
+    <div id="resultado-ej6"></div>
+    <div id="estadisticas-ej6"></div>
+    <div class="registro-wrapper">
+      <table class="tabla-registro" id="registro-ej6"></table>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= EJERCICIO 7 ================= -->
+<section id="presion" class="seccion-ejercicio oculto">
+  <div class="tarjeta">
+
+    <div class="enunciado creative">
+      <h2>Ejercicio 7 – Presión hidrostática simple.</h2>
+      <p>Un tanque de 14 m contiene agua (ρ = 1000kg/m3). ¿Cuál es la 
+presión absoluta a una profundidad de 10 m, considerando la presión 
+atmosférica como Patm = 101300 Pa? 
+</p>
+    </div>
+
+    <form class="formulario">
+      <label>Presión (Pa)</label>
+      <input id="entrada-presion-0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+      <div class="botones">
+        <button type="button" class="btn-primario" id="validar-presion">Validar</button>
+        <button type="button" class="btn-secundario btn-volver">Volver</button>
+        <button type="button" class="btn-borrar" onclick="borrarRegistro('presion')">Borrar Registros
+        </button>
+
+      </div>
+    </form>
+
+    <div id="resultado-presion"></div>
+    <div id="estadisticas-presion"></div>
+    <div class="registro-wrapper">
+      <table class="tabla-registro" id="registro-presion"></table>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= EJERCICIOS 8, 9, 10 (sin cambios) ================= -->
+<!-- TODO SIGUE IGUAL: no tocamos nada de los ejercicios 8, 9 y 10 -->
+
+<section id="ej8" class="seccion-ejercicio oculto">
+  <div class="tarjeta">
+    <div class="enunciado creative">
+      <h2>Ejercicio 8 – Manómetro de Mercurio</h2>
+      <p>
+        Un manómetro diferencial de mercurio (ρHg 
+= 13600kg/m3) mide la 
+diferencia de presión entre dos puntos de un sistema de fluidos. Si la 
+diferencia de altura del mercurio es h = 0.3 m, calcula la diferencia 
+de presión entre esos puntos. 
+      </p>
+    </div>
+
+    <form class="formulario">
+      <label>Diferencia de presión (Pa)</label>
+      <input id="entrada-ej8-0" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+      <div class="botones">
+        <button type="button" class="btn-primario" id="validar-ej8">Validar</button>
+        <button type="button" class="btn-secundario btn-volver">Volver</button>
+        <button type="button" class="btn-borrar" onclick="borrarRegistro('ej8')">Borrar Registros
+        </button>
+
+      </div>
+    </form>
+
+    <div id="resultado-ej8"></div>
+    <div id="estadisticas-ej8"></div>
+    <div class="registro-wrapper">
+      <table class="tabla-registro" id="registro-ej8"></table>
+    </div>
+
+  </div>
+</section>
+
+<section id="ej9" class="seccion-ejercicio oculto">
+  <div class="tarjeta">
+    <div class="enunciado creative">
+      <h2>Ejercicio 9 – Presión en burbuja de jabón</h2>
+      <p>
+       Una burbuja de jabón (que tiene dos superficies: interior y exterior) de 
+radio R = 1 cm se forma. La tensión superficial de la película de jabón 
+es σ = 0.030 N/m. Calcula la presión extra interior (por encima de la 
+presión ambiente) necesaria para mantener la burbuja.
+      </p>
+    </div>
+
+    <form class="formulario">
+      <label>Presión extra interior (Pa)</label>
+      <input id="entrada-ej9-0" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+      <div class="botones">
+        <button type="button" class="btn-primario" id="validar-ej9">Validar</button>
+        <button type="button" class="btn-secundario btn-volver">Volver</button>
+        <button type="button" class="btn-borrar" onclick="borrarRegistro('ej9')">Borrar Registros
+        </button>
+
+
+      </div>
+    </form>
+
+    <div id="resultado-ej9"></div>
+    <div id="estadisticas-ej9"></div>
+    <div class="registro-wrapper">
+      <table class="tabla-registro" id="registro-ej9"></table>
+    </div>
+
+  </div>
+</section>
+
+<section id="ej10" class="seccion-ejercicio oculto">
+  <div class="tarjeta">
+    <div class="enunciado creative">
+      <h2>Ejercicio 10 – Presión sobre superficie inclinada</h2>
+      <p>
+        Una placa plana de área A = 2.0 m2 está sumergida en agua de 
+densidad 1000 kg/m3. La placa está inclinada 30° respecto a la 
+horizontal y su superficie más profunda se encuentra a  5.0 m bajo la 
+superficie libre del agua. Se pide calcular:
+        <br>a) La presión en el punto más 
+profundo de la placa.
+        <br>b) La fuerza hidrostática total normal a la placa, 
+suponiendo que la presión en cada punto se comporta como en fluido 
+estático (varía linealmente con la profundidad).
+        <br>c) La profundidad del 
+centroide efectivo para la presión (punto donde se puede aplicar la 
+fuerza resultante).
+      </p>
+    </div>
+
+    <form class="formulario">
+      <label>a) Presión (Pa)</label>
+      <input id="entrada-ej10-0" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+      <label>b) Fuerza (N)</label>
+      <input id="entrada-ej10-1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+      <label>c) Profundidad (m)</label>
+      <input id="entrada-ej10-2" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+
+      <div class="botones">
+        <button type="button" class="btn-primario" id="validar-ej10">Validar</button>
+        <button type="button" class="btn-secundario btn-volver">Volver</button>
+        <button type="button" class="btn-borrar" onclick="borrarRegistro('ej10')">Borrar Registros
+        </button>
+
+      </div>
+    </form>
+
+    <div id="resultado-ej10"></div>
+    <div id="estadisticas-ej10"></div>
+    <div class="registro-wrapper">
+      <table class="tabla-registro" id="registro-ej10"></table>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
+

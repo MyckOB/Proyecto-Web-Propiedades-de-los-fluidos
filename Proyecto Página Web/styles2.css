@@ -1,0 +1,119 @@
+:root {
+  --color-principal: #0077b6;
+  --color-secundario: #00b4d8;
+  --color-fondo: #f5f9ff;
+  --color-texto: #222;
+  --radius: 14px;
+  --sombra: 0 4px 10px rgba(0,0,0,.1);
+}
+
+body{
+  background:var(--color-fondo);
+}
+
+/* ENCABEZADOS DE EJERCICIOS */
+.enunciado h2{
+  color:var(--color-principal);
+  margin-bottom:8px;
+}
+
+.enunciado p{
+  background:#e6f1ff;
+  padding:12px;
+  border-radius:var(--radius);
+  margin-bottom:18px;
+}
+
+/* FORMULARIO */
+.formulario label{
+  font-weight:bold;
+  margin-top:10px;
+  display:block;
+  margin-bottom:4px;
+}
+
+input{
+  width:100%;
+  padding:10px;
+  border-radius:var(--radius);
+  border:1px solid #ccc;
+  margin-bottom:12px;
+}
+
+/* BOTONES */
+.botones{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+
+.btn-primario{
+  background:var(--color-principal);
+  color:white;
+  border:none;
+  padding:10px 14px;
+  border-radius:var(--radius);
+  cursor:pointer;
+}
+
+.btn-secundario{
+  background:#ddd;
+  border:none;
+  padding:10px 14px;
+  border-radius:var(--radius);
+  cursor:pointer;
+}
+
+/* ============================
+   MEJORA VISUAL DE LOS BOTONES
+   ============================ */
+
+.botones{
+  display:flex;
+  gap:12px;
+  margin-top:15px;
+}
+
+.btn-primario{
+  background:linear-gradient(135deg, var(--color-principal), #005f9a);
+  color:white;
+  border:none;
+  padding:12px 18px;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:15px;
+  font-weight:600;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  transition:0.25s;
+}
+
+.btn-primario:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 16px rgba(0,0,0,0.18);
+  filter:brightness(1.08);
+}
+
+.btn-primario:active{
+  transform:scale(0.97);
+}
+
+.btn-secundario{
+  background:#e6e6e6;
+  border:none;
+  padding:12px 18px;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:15px;
+  font-weight:600;
+  transition:0.25s;
+}
+
+.btn-secundario:hover{
+  background:#d4d4d4;
+  transform:translateY(-2px);
+}
+
+.btn-secundario:active{
+  transform:scale(0.97);
+}
+
